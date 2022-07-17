@@ -2,26 +2,24 @@ package com.news.models;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.Set;
-import java.util.UUID;
 
+import com.news.constants.Category;
 import com.news.constants.Constant;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
-@Builder
+@Setter
+@Getter
+@ToString
 @AllArgsConstructor
 public class Post implements Serializable {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = Constant.POST_SERIAL;
-	private long id;
+	private final long id;
 	private String title;
 	private String thumbnail;
 	private String shortContent;

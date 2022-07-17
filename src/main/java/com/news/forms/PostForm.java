@@ -1,17 +1,15 @@
 package com.news.forms;
 
-import java.time.LocalDateTime;
 import java.util.Set;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.news.models.Category;
+import com.news.constants.Category;
 
 import lombok.Data;
 

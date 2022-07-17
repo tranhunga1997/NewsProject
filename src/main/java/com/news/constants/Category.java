@@ -1,4 +1,4 @@
-package com.news.models;
+package com.news.constants;
 
 public enum Category {
 	Environmental("môi trường"),
