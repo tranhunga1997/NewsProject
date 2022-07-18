@@ -1,8 +1,8 @@
 package com.news.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.news.constants.Constant;
 
@@ -13,6 +13,6 @@ import lombok.Setter;
 @Getter
 public class Datas implements Serializable {
 	private static final long serialVersionUID = Constant.POST_SERIAL;
-	private List<Post> posts = new ArrayList<>(); 
+	private Set<Post> posts = new HashSet<>(); 
 
 }
