@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,26 +19,28 @@ import com.news.models.Post;
 
 @Service
 public class PostService {
-	
-	private Set<Post> posts;
-	
+
+	private final Set<Post> posts;
+
 	public PostService(Datas datas) {
 		posts = datas.getPosts();
 	}
 
 	/**
 	 * Filter tin tức
-	 * @param form filter form
+	 * 
+	 * @param form        filter form
 	 * @param currentPage trang hiện tại (bắt đầu từ 1)
-	 * @param limit số tin tức hiện trong 1 trang
+	 * @param limit       số tin tức hiện trong 1 trang
 	 * @return danh sách tin tức
 	 */
 	public List<Post> filter(PostFilterForm form, int currentPage, int limit) {
 		Stream<Post> postStream = posts.stream();
 		if (null == form) {
 			// form is null
-			postStream = postStream.skip((currentPage - 1) * limit).limit(limit);
-			return postStream.collect(Collectors.toList());
+			return postStream.skip((currentPage - 1) * limit)
+					.limit(limit)
+					.collect(Collectors.toList());
 		}
 
 		if (!ObjectUtils.isEmpty(form.getId()) && form.getId() != 0) {
@@ -54,13 +55,15 @@ public class PostService {
 			// category filter
 			postStream = postStream.filter(p -> p.getCategory().contains(form.getCategory()));
 		}
-		
-		postStream = postStream.skip((currentPage - 1) * limit).limit(limit);
-		return postStream.collect(Collectors.toList());
+
+		return postStream.skip((currentPage - 1) * limit)
+				.limit(limit)
+				.collect(Collectors.toList());
 	}
 
 	/**
 	 * Thêm tin tức
+	 * 
 	 * @param post
 	 * @return post vừa thêm
 	 * @throws BusinessException
@@ -79,6 +82,7 @@ public class PostService {
 
 	/**
 	 * Sửa tin tức
+	 * 
 	 * @param post
 	 * @return post vừa sửa
 	 * @throws BusinessException
@@ -88,14 +92,17 @@ public class PostService {
 		Optional<Post> oldPostOptional = postStream.filter(p -> p.getId() == post.getId()).findAny();
 		Post oldPost = oldPostOptional.orElseThrow(() -> new BusinessException("bài post không tồn tại."));
 		BeanUtils.copyProperties(post, oldPost);
+		oldPost.setUpdateDatetime(LocalDateTime.now());
 		posts.add(oldPost);
 		return oldPost;
 	}
-	
+
 	/**
 	 * Xóa tin tức
+	 * 
 	 * @param id
-	 * @return <code>true</code> xóa thành công <br> <code>false</code> xóa thất bại
+	 * @return <code>true</code> xóa thành công <br>
+	 *         <code>false</code> xóa thất bại
 	 */
 	public boolean delete(long id) {
 		Stream<Post> postStreams = posts.stream();
