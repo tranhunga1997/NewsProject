@@ -1,130 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Tin Tức 24h JP</title>
+  <title>${sortContent}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../static/style.css">
+  <link rel="stylesheet" th:href="@{/style.css}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script th:src="@{/ckeditor/ckeditor.js}"></script>	
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<!-- <th:block th:include="/_navbar"></th:block> -->
-
-<div class="container" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-
-    <div class="row">
-        <a href="C:/Users/congu/Documents/NewsProject/src/main/resources/templates/index.html" ><h2 class="first-title">Tin tức 24h JP</h2></a>
-        
-        <!-- Search form -->
-        <form class="form-inline col">
-          <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-          aria-label="Search">
-          <button class="btn btn-success" type="submit" style="margin-top:0;"><i class="fas fa-search" aria-hidden="true"></i></button>
-        </form>
-  
-      </div>
-      
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Trong nước</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Quốc tế</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Chính trị</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Kinh tế</a>
-      </li>    
-      <li class="nav-item">
-        <a class="nav-link" href="#">Xã hội</a>
-      </li>    
-      <li class="nav-item">
-        <a class="nav-link" href="#">Thể thao</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Bất động sản</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Tiền số</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Chứng khoán</a>
-      </li>
-      <li class="nav-item dropdown">  
-        
-        <a class="nav-link dropdown-toggle nav-left" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right dropdown-default"
-          aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" href="C:/Users/congu/Documents/NewsProject/src/main/resources/templates/login.html">Lognin</a>
-          <a class="dropdown-item" href="#">Logout</a>
-        </div>
-      </li>
-    </ul>
-</div>
-
-<div class="container">
-    <div class="col-sm-8" style="background-color:lavender;">
-      <h2 class="title">${title}岸田首相の野望が動き出した…あえて「安倍路線」を引き継いだ「したたかな理由」 「最強の政権」を目指して</h2>
-      <img src="" alt="">${images}
-      <h4 class="short-content">${sortContent}政治の世界が動き始めた…</h4>
-      <p class="content">${content}永田町のど真ん中にぽっかりと大きな穴が開いている。そこはかつて総理大臣として歴代最長記録を持つ安倍晋三元首相がいた場所だ。安倍元首相は7月8日に奈良で参議院選挙の応援中に狙撃されて死亡。日本は大きな悲しみに包まれた。
-
-        しかし悲しんでばかりいられないのが政治の世界だ。安倍元首相がいなくなった空洞を埋めるべく、様々な面々がさっそく蠢き始めている。
-        その中で「覚醒した」と話題になっているのが、岸田文雄首相だ。かねてから「聞く力」を誇っていた岸田首相だが、実行力に欠けると思われ、「検討使」などと揶揄されていた。ところが7月14日夕方の総理会見では、秋に安倍元首相の国葬開催を発表した他、電気不足となる今冬に備えて最大9基の原発の再稼働、5年以内に防衛力を抜本的に強化することなど、これまでになく力強くかつ明確に方針を打ち出した。
-
-            もちろんこの多くは、安倍元首相の影響が見られるものだ。6月7日に閣議決定された「経済財政運営と改革の基本方針2022」の中でも「大胆な金融政策、起動的な財政政策、民間投資を喚起する成長戦略を一体的に進める経済財政運営の枠組みを堅持」することが記載されたが、これはアベノミクスの継承に他ならない。
-
-        そして安倍元首相も存命中、政府の政策に対する大きな影響力を行使した。選挙演説でも急速な円安が進む中でゼロ金利政策の継続を主張するなど、持論であるアベノミクスの遂行を強く主張。また核共有や防衛費をGDPの2％に増額する提案など、その姿勢は岸田政権を背後から操ろうとしているとさえ思えるものだった。
-      </p>
-      <h5 class="category">${category} 政治</h5>
-
-      <th:block sec:authorize="">
-        <div class="edit">
-            <a href="C:/Users/congu/Documents/NewsProject/src/main/resources/templates/editnew.html" target="_blank"><i class="fas fa-edit" style="color: orange;"></i></a>
-            <a href=""><i class="fas fa-trash" style="color: red;"></i></a>
-        </div>
-      </th:block>
-
-    </div>
-  
-  
-  <ul class="pagination justify-content-center">
-    <li class="page-item"><a class="page-link" href="javascript:void(0);"><<</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);">>></a></li>
-  </ul>
-
-
-</div>
-
-
-
-<div xmlns:th="http://www.thymeleaf.org">
-  <!-- Footer -->
-  <footer class="page-footer font-small blue">
-  
-      <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="/"> newbie.com</a>
-      </div>
-      <!-- Copyright -->
+	<th:block th:include="/_header"></th:block>
+    <th:block th:include="/_navbar"></th:block>
+    <a>
     
-  </footer>
-  <!-- Footer -->
-  </div>
+    <th:block th:include="/_newcontent"></th:block>
+    </a>
+	<th:block th:include="/_pagination"></th:block>
+
   
 <th:block th:include="/_footer"></th:block>
 </body>
