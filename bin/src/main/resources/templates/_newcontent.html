@@ -1,0 +1,55 @@
+
+<div class="container bgr-img" xmlns:th="http://www.thymeleaf.org">
+
+    <div >
+	    	<h2 class="title" th:field="*{title}">${title}White House denies double standard as officials take victory lap on sinking gasoline prices</h2>
+	        <img th:src="@{/???}" alt="" th:field="*{images}">${images}
+	        <h4 class="short-content" th:field="*{shortContent}">${sortContent}White House denies double standard as officials take victory lap on sinking gasoline prices</h4>
+	        <p class="content" th:field="*{content}">${content}Listen to this articleÅ@0:00 / 1:50Å@1XÅ@BeyondWords.
+	        	The White House denied on Monday that it was deploying a double standard when it comes to gasoline prices. 
+				Jared Bernstein, a senior economic adviser, was asked during the White House press conference whether it was fair for administration officials to take credit for decreasing gasoline prices after spending months blaming Russia for their rise. 
+				"I think there is no Åeboth waysÅf thinking here at all," said Bernstein. "I very much disagree with that framing."
+				"It's one of the fastest declines in retail gas prices in a decade," said Bernstein. Bernstein said the White House and President Biden were working "tirelessly" to address rising inflation, especially when it came to the gasoline market. 
+				"He put his head down and got to work, and got us to work, to do everything we could to achieve that goal," said Bernstein. 
+				The White House noted that gasoline prices had dropped nearly 50 cents per gallon over the last thirty days. Officials say the drop is the result of Biden's decision to tap the Strategic Petroleum Reserve and engage U.S. allies to pump more oil. 
+				"It's one of the fastest declines in retail gas prices in a decade," said Bernstein. </p>
+	        <h5 class="category" th:filed="*{category}">${category}ê≠é°</h5>
+	        
+		<th:block sec:authorize="USER">
+		      <div class="edit" >
+				<a href="#"><i class="fas fa-heart"></i></a>
+				<a href="#"><i class="fas fa-comment"></i></a>
+				<a href="#"><i class="fas fa-paper-plane" style="color: write;"></i></a>
+				<a href="#"><i class="far fa-flag"></i></a>
+			  </div>
+		</th:block>
+		
+	  <th:block sec:authorize="ADMIN">
+        <div class="edit">
+            <a th:href="@{/editnew}" target="_blank"><i class="fas fa-edit" style="color: orange;"></i></a>
+            
+            <a href="#myModal" data-toggle="modal"><i class="fas fa-trash" style="color: red;"></i>
+				<!-- Modal HTML -->
+				<div id="myModal" class="modal fade">
+					<div class="modal-dialog modal-confirm">
+						<div class="modal-content">
+							<div class="modal-header">			
+								<h4 class="modal-title">Are you sure?</h4>	
+				                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							</div>
+							<div class="modal-body">
+								<p>Do you really want to delete these records? This process cannot be undone.</p>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-info" data-dismiss="modal">Cancel</button>
+								<button type="submit" class="btn btn-danger">Delete</button>
+							</div>
+						</div>
+					</div>
+				</div>    
+            </a>
+        </div>
+      </th:block>
+    </div>
+
+</div>
