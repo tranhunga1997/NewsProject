@@ -19,7 +19,7 @@ public class FileUtil {
 		return new File(Constant.DATA_ROOT_PATH, fileName);
 	}
 	
-	public static void writeObject(Object obj, File file) throws FileNotFoundException, IOException {
+	public static void writeObject(File file, Object obj) throws FileNotFoundException, IOException {
 		try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
 			oos.writeObject(obj);
 		}

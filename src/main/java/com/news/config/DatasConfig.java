@@ -33,7 +33,7 @@ public class DatasConfig {
 
 	@PreDestroy
 	public void preDestroy() throws FileNotFoundException, IOException {
-		FileUtil.writeObject(datas, FileUtil.initFile("post-data.ser"));
+		FileUtil.writeObject(FileUtil.initFile("post-data.ser"), datas);
 	}
 
 }

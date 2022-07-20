@@ -31,7 +31,7 @@ class FileUtilTest {
 		Datas datas = new Datas();
 		datas.getPosts().addAll(Arrays.asList(post1, post2, post3));
 		try {
-			FileUtil.writeObject(datas, FileUtil.initFile("post-data.ser"));
+			FileUtil.writeObject(FileUtil.initFile("post-data.ser"), datas);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
