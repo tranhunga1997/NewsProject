@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Admin-Home</title>
+  <title>Home(ADMIN)</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" th:href="@{/style.css}">
@@ -13,20 +13,16 @@
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	
 	<th:block th:include="/_header"></th:block>
-    <th:block th:include="/_admin_header"></th:block>
-    <div class="container">
-	    <div class="col-sm-6">	    
-		    <a th:href="@{/newdetail}">
-		    	<th:block th:include="/_newcontent"></th:block>
-		   	</a>		     
-	    </div>
-    </div>
+  	<th:block th:include="/_admin_header"></th:block>
+
+	<th:block th:include="/_newSummary"></th:block>
+
 	<th:block th:include="/_pagination"></th:block>
 	<th:block th:include="/_footer"></th:block>
 

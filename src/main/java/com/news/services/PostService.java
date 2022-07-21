@@ -1,27 +1,35 @@
 package com.news.services;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.news.exceptions.BusinessException;
 import com.news.forms.PostFilterForm;
 import com.news.models.Datas;
 import com.news.models.Post;
+import com.news.utils.FileUtil;
+import com.news.utils.ImageUtil;
 
 @Service
 public class PostService {
 	
-	private Set<Post> posts;
+	private List<Post> posts;
 	
 	public PostService(Datas datas) {
 		posts = datas.getPosts();
@@ -57,6 +65,39 @@ public class PostService {
 		
 		postStream = postStream.skip((currentPage - 1) * limit).limit(limit);
 		return postStream.collect(Collectors.toList());
+	}
+	
+	/**
+	 * Lấy tổng số trang
+	 * @param form
+	 * @param limit
+	 * @return totalPAge
+	 */
+	public long getTotalPage(PostFilterForm form, int limit) {
+		Stream<Post> postStream = posts.stream();
+		long totalPage = 0;
+		
+		if (null == form) {
+			// form is null
+			totalPage = (long) Math.ceil(posts.size() / limit);
+			return totalPage;
+		}
+
+		if (!ObjectUtils.isEmpty(form.getId()) && form.getId() != 0) {
+			// id filter
+			postStream = postStream.filter(p -> p.getId() == form.getId());
+		}
+		if (StringUtils.hasLength(form.getTitle())) {
+			// title filter
+			postStream = postStream.filter(p -> p.getTitle().contains(form.getTitle()));
+		}
+		if (null != form.getCategory()) {
+			// category filter
+			postStream = postStream.filter(p -> p.getCategory().contains(form.getCategory()));
+		}
+		
+		totalPage = (long) Math.ceil(postStream.count() / limit);
+		return totalPage;
 	}
 
 	/**
@@ -106,5 +147,19 @@ public class PostService {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+	
+	/**
+	 * upload hình ảnh
+	 * @param imageByte
+	 * @param imageName
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public String uploadImage(byte[] imageByte, String imageName) throws FileNotFoundException, IOException {
+		File file = ImageUtil.initFile(imageName);
+		FileUtil.writeByte(file, imageByte);
+		return imageName;
 	}
 }
