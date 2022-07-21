@@ -53,6 +53,12 @@ class PostServiceTest {
 	}
 	
 	@Test
+	void testGetTotalPage() {
+		long totalPage = postService.getTotalPage(null, 5);
+		System.out.println(totalPage);
+	}
+	
+	@Test
 	void testDelete() {
 		
 	}

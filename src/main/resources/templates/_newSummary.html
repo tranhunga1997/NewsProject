@@ -1,0 +1,63 @@
+
+<div class="container bootstrap snippets bootdey" xmlns:th="http://www.thymeleaf.org" style="display: flex; flex-wrap: wrap;">
+	    <div class="col-sm-4" th:each="post : ${posts}">
+			
+			<input type="hidden" th:value="${post.id}"/>
+			<div class="widget single-news" style="width: 350px;">
+			  <div class="image">
+				<img th:src="@{/image/no-image.jpg}" class="img-responsive" style="width: 350px; height: 250px;">
+				<span class="gradient" style="width: 350px;"></span>
+			  </div>
+			  <div class="details">
+				<th:block th:each="cate : ${post.category}">
+					<div class="category"><a th:href="@{|/newdetail?title=${post.title}|}" th:utext="${cate.name}"></a></div>
+				</th:block>
+				<h3><a th:href="@{|/post/detail?title=${post.title}|}" th:utext="${post.title}"></a></h3>
+				<time th:utext="${post.updateDatetime}" style="color: white; font-size: 12px;"></time>
+			  </div>
+			</div>
+
+			<div class="edit" >
+				<a href="#"><i class="fas fa-heart"></i></a>
+				<a href="#"><i class="fas fa-comment"></i></a>
+				<a href="#"><i class="fas fa-paper-plane" style="color: write;"></i></a>
+				<a href="#"><i class="far fa-flag"></i></a>
+			</div>
+			
+		  <th:block sec:authorize="ADMIN">
+	        <div class="edit">
+				 <input type="hidden" th:value="${post.id}"/>
+	        	
+	            <a th:href="@{|/post/edit?id=${post.id}|}" target="_blank"><i class="fas fa-edit" style="color: orange;"></i></a>
+	            
+	            <a href="#myModal" data-toggle="modal"><i class="fas fa-trash" style="color: red;"></i>
+	            	
+					<!-- Modal HTML -->
+					<div id="myModal" class="modal fade">
+						<div class="modal-dialog modal-confirm">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title">Are you sure?</h4>	
+					                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								</div>
+								<div class="modal-body">
+									<p>Do you really want to delete these records? This process cannot be undone.</p>
+								</div>
+								<div class="modal-footer">
+									<input type="hidden" th:value="${post.id}"/>
+									<button type="submit" class="btn btn-info" data-dismiss="modal">Cancel</button>
+									
+									
+<!-- 									<button type="submit" class="btn btn-danger" th:data-action="@{|/admin/delete?id=${post.id}|}">Delete</button> -->
+									<a th:href="@{|/post/delete?id=${post.id}|}" class="btn btn-danger">Delete</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+	            </a>
+	        </div>
+	      </th:block>
+	    </div>
+
+</div>

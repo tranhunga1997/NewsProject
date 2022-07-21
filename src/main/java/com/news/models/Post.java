@@ -19,7 +19,7 @@ import lombok.ToString;
 public class Post implements Serializable {
 	
 	private static final long serialVersionUID = Constant.POST_SERIAL;
-	private final long id;
+	private long id;
 	private String title;
 	private String thumbnail;
 	private String shortContent;

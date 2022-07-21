@@ -16,16 +16,16 @@ import lombok.Data;
 
 @Data
 public class PostForm {
+	private Long id;
 	@NotBlank(message = "Chưa nhập tiêu đề.")
-	@Size(max = 50, message = "Vượt quá 50 ký tự.")
-	@Pattern(regexp = "^\\w+$", message = "Chỉ được nhập chữ và số.")
+	@Size(max = 200, message = "Vượt quá 50 ký tự.")
+//	@Pattern(regexp = "^\\w+$", message = "Chỉ được nhập chữ và số.")
 	private String title;
 	
-//	@NotBlank
 	private MultipartFile thumbnail;
 	
 	@NotBlank(message = "Chưa nhập nội dung ngắn.")
-	@Size(max = 200, message = "Vượt quá 200 ký tự.")
+	@Size(max = 400, message = "Vượt quá 200 ký tự.")
 	private String shortContent;
 	
 	@NotBlank(message = "Chưa nhập nội dung chính.")
