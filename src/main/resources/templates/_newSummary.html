@@ -5,15 +5,16 @@
 			<input type="hidden" th:value="${post.id}"/>
 			<div class="widget single-news" style="width: 350px;">
 			  <div class="image">
-				<img th:src="@{/image/no-image.jpg}" class="img-responsive" style="width: 350px; height: 250px;">
+				<img th:src="@{|/image/${post.thumbnail}|}" class="img-responsive" style="width: 350px; height: 250px;">
 				<span class="gradient" style="width: 350px;"></span>
 			  </div>
 			  <div class="details">
 				<th:block th:each="cate : ${post.category}">
-					<div class="category"><a th:href="@{|/newdetail?title=${post.title}|}" th:utext="${cate.name}"></a></div>
+					<div class="category"><a th:href="@{|/post/newdetail?title=${post.title}|}" th:utext="${cate.name}"></a></div>
 				</th:block>
 				<h3><a th:href="@{|/post/detail?title=${post.title}|}" th:utext="${post.title}"></a></h3>
-				<time th:utext="${post.updateDatetime}" style="color: white; font-size: 12px;"></time>
+<!-- 				<p><a th:href="@{|/post/detail?title=${post.title}|}" th:utext="${post.shortContent}" style="color: white; text-decoration: none;"></a></p> -->
+				<p th:utext="${#temporals.format(post.createDatetime, 'yyyy-MM-dd HH:mm')}" style="color: white; font-size: 12px;"></p>
 			  </div>
 			</div>
 

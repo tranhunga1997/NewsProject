@@ -5,12 +5,12 @@
 
 
 
-<div xmlns:th="http://www.thymeleaf.org">
+<div xmlns:th="http://www.thymeleaf.org" class="container">
     <div th:each="post : ${post}">
         <input type="hidden" th:value="${post.id}"/>
-        <h6 class="title" th:utext="${post.title}"></h6>
+        <h5 class="title" th:utext="${post.title}"></h5>
         <a th:href="@{|/post/detail?title=${post.title}|}" th:id="${post.title}" >
-              <img th:src="@{/image/no-image.jpg}" style="width: 150px; height: 150px;" alt="">
+              <img th:src="@{|/image/${post.thumbnail}|}" style="width: 600px; height: 400px;" alt="">
         </a>
         <p class="short-content" th:utext="${post.shortContent}"></p>
         <p class="" th:utext="${post.content}"></p>

@@ -24,9 +24,13 @@ body{
     padding: 30px 0; 
 }
 
-
 .row a{
+	color: black;
+}
+
+.row a:hover{
     text-decoration: none;
+    color: #28a745;
 }
 .row .col-sm{
 	max-width: 40%;
@@ -73,15 +77,18 @@ body{
     margin: 15px;
 }
 
-/* .unset-href a{ */
-/* 	    pointer-events: none; */
-/* 	    color: black; */
-/* } */
+.page-active{
+	  background-color: red;
+}
 
+.nav-link{
+	color: black;
+}
 /* newSummary CSS  Start*/
 
 .details a:hover{
- text-decoration:none;    
+ text-decoration:none;
+ color:  #28a745;
 }
 
 .widget.single-news {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Home(ADMIN)</title>
+  <title th:utext="${post.category}"></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" th:href="@{/style.css}">
@@ -17,16 +17,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	
+
 	<th:block th:include="/_header"></th:block>
-  	<th:block th:include="/_admin_header"></th:block>
-
-	<th:block th:include="/_newSummary"></th:block>
-
+  	<th:block th:include="/_navbar"></th:block>
+	<th:block th:include="/_newSummary"></th:block>	     
 	<th:block th:include="/_pagination"></th:block>
 	<th:block th:include="/_footer"></th:block>
-
 </body>
+
 <script type="text/javascript">
 	var page = document.getElementById("[[${page}]]");
 	page.style.background = "#28a745";

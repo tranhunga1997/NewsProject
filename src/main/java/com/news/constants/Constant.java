@@ -6,4 +6,5 @@ public final class Constant {
 	     
 	public static final String DATA_ROOT_PATH = "src/main/resources/data";
 	public static final String IMAGE_ROOT_PATH = "src/main/resources/static/image";
+	public static final String ROLE ="ADMIN";
 }

@@ -17,16 +17,19 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+	
 	<th:block th:include="/_header"></th:block>
-    <th:block th:include="/_navbar"></th:block>
-  	<div class="container" th:each="post : ${post}">
-	   <th:block th:include="/_newContent"></th:block>
- 	</div>
-    
-	<th:block th:include="/_pagination"></th:block>
+  	<th:block th:include="/_navbar"></th:block>
 
-  
+	<th:block th:include="/_newContent"></th:block>
+
+<!-- 	<th:block th:include="/_pagination"></th:block> -->
 	<th:block th:include="/_footer"></th:block>
+
 </body>
+<script type="text/javascript">
+	var page = document.getElementById("[[${page}]]");
+	page.style.background = "#28a745";
+	page.style.color = "white";
+</script>
 </html>

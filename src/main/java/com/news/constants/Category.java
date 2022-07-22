@@ -1,12 +1,12 @@
 package com.news.constants;
 
 public enum Category {
-	Environmental("môi trường"),
-	Government("chính phủ"),
-	Media("truyền thông"),
-	Sports("thể thao"),
-	Technology("công nghệ"),
-	Weather("thời tiết");
+	Environmental("Môi trường"),
+	Government("Chính phủ"),
+	Media("Truyền thông"),
+	Sports("Thể thao"),
+	Technology("Công nghệ"),
+	Weather("Thời tiết");
 	
 	private String name;
 	

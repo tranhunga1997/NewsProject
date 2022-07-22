@@ -1,15 +1,16 @@
 
   <ul class="pagination justify-content-center" xmlns:th="http://www.thymeleaf.or" >
-    <li class="page-item">
-    	<a class="page-link">&laquo;</a>
+  
+    <li class="page-item" th:if="${page != 1} ? 'disabled'">
+    	<a th:href="@{|/?page=${page-1}|}" class="page-link" tabindex="-1" >&laquo;</a>
     </li>
-    <li class="page-item">
+    <li class="page-item" style="display: inline-flex;">
     	<th:block th:each="page : ${#numbers.sequence(1, totalPage)}">
-    		<a class="page-link" th:href="@{|/?page=${page}|}" th:utext="${page}"></a>
-<!--     		<span class="nav-item" th:if="${page == -1}"> ... </span> -->
+    		<a class="page-link" th:href="@{|/?page=${page}|}" th:utext="${page}" th:if="${page} != -1" th:id="${page}"></a>
     	</th:block>
+
     </li>
-    <li class="page-item">
-    	<a class="page-link">&raquo;</a>
+    <li class="page-item" th:if="${page != totalPage} ? 'disabled'">
+    	<a th:href="@{|/?page=${page+1}|}" class="page-link" th:if="${page} != 0">&raquo;</a>
     </li>
   </ul>
